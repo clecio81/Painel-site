@@ -74,13 +74,12 @@ sleep 1
 if [[ -e "$HOME/banco.sql" ]]; then
     mysql -h localhost -u root -p$senha --default_character_set utf8 sshplus < banco.sql
 	mysql -h localhost -u root -p$senha --default_character_set utf8 ssh < banco2.sql
-    rm /root/banco.sql
-	rm /root/banco2.sql
+   
 else
     clear
     echo -e "\033[1;31m ERRO AO IMPORTAR BANCO DE DADOS\033[0m"
     sleep 2
-    rm /root/install.sh > /dev/null 2>&1
+
     exit
 fi
 service apache2 restart > /dev/null 2>&1
@@ -121,4 +120,3 @@ echo -e "\033[1;32m MODDED BY @ANDLEY302!"
 echo ""
 echo -e "\033[1;33m Altere a senha quando logar no painel>> Configuracoes>> Senha Antiga: admin >> Nova Senha: \033[0m"
 cat /dev/null > ~/.bash_history && history -c
-rm /root/install
